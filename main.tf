@@ -32,6 +32,15 @@ resource "aws_subnet" "mysubnet" {
 }
 
 
+resource "aws_subnet" "mysubnetnew" {
+  vpc_id     = data.aws_vpc.selected.id
+  cidr_block = "172.31.48.0/20"
+
+  tags = {
+    CreateUsing = "DATA Block"
+  }
+}
+
 resource "aws_internet_gateway" "myigw" {
   vpc_id = aws_vpc.myvpc.id
 
